@@ -93,14 +93,14 @@ const HomePage = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-6">
           {/* Sol tərəf - Kataloq */}
-          <aside className="lg:w-64 flex-shrink-0">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-24">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">📦 Kataloq</h2>
+          <aside className="lg:w-48 flex-shrink-0">
+            <div className="bg-white rounded-lg shadow-md p-4 sticky top-24">
+              <h3 className="text-lg font-bold text-gray-900 mb-3">📦 Kataloq</h3>
               
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <button
                   onClick={() => setSelectedCategory('all')}
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors ${
+                  className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                     selectedCategory === 'all'
                       ? 'bg-orange-500 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -115,7 +115,7 @@ const HomePage = () => {
                     <button
                       key={category}
                       onClick={() => setSelectedCategory(category)}
-                      className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-colors ${
+                      className={`w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                         selectedCategory === category
                           ? 'bg-orange-500 text-white'
                           : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
