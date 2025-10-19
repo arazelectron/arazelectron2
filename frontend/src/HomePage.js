@@ -195,76 +195,64 @@ const HomePage = () => {
       <section id="contact" className="bg-gray-900 text-white py-12 mt-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4">📞 Bizimlə Əlaqə</h2>
+            <h2 className="text-3xl font-bold mb-2">📞 Bizimlə Əlaqə</h2>
             <p className="text-gray-400">Suallarınız üçün bizimlə əlaqə saxlayın</p>
           </div>
           
           {contactInfo && (
-            <div>
-              {/* Əlaqə Qrupları */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                {/* WhatsApp */}
-                <div className="bg-gray-800 p-6 rounded-xl">
-                  <h3 className="text-xl font-bold mb-4 text-green-400">📱 WhatsApp</h3>
-                  <div className="space-y-3">
+            <div className="max-w-4xl mx-auto">
+              {/* Əlaqə qrupları - yan-yana */}
+              <div className="bg-gray-800 rounded-xl p-8 mb-6">
+                <div className="space-y-4 text-gray-300">
+                  {/* WhatsApp */}
+                  <div>
+                    <span className="text-green-400 font-semibold">📱 WhatsApp: </span>
                     {contactInfo.contact_groups?.whatsapp?.map((contact, index) => (
-                      <a
-                        key={index}
-                        href={`https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block bg-green-500 text-white px-4 py-3 rounded-lg hover:bg-green-600 transition-colors"
-                      >
-                        <div className="font-medium">{contact.name}</div>
-                        <div className="text-sm">{contact.phone}</div>
-                      </a>
+                      <span key={index}>
+                        <a href={`https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">
+                          {contact.name} ({contact.phone})
+                        </a>
+                        {index < contactInfo.contact_groups.whatsapp.length - 1 && ', '}
+                      </span>
                     ))}
                   </div>
-                </div>
-                
-                {/* Ustalar */}
-                <div className="bg-gray-800 p-6 rounded-xl">
-                  <h3 className="text-xl font-bold mb-4 text-blue-400">🔧 Ustalar</h3>
-                  <div className="space-y-3">
+                  
+                  {/* Ustalar */}
+                  <div>
+                    <span className="text-blue-400 font-semibold">🔧 Ustalar: </span>
                     {contactInfo.contact_groups?.ustalar?.map((contact, index) => (
-                      <a
-                        key={index}
-                        href={`tel:${contact.phone.replace(/[^0-9]/g, '')}`}
-                        className="block bg-blue-500 text-white px-4 py-3 rounded-lg hover:bg-blue-600 transition-colors"
-                      >
-                        <div className="font-medium">{contact.name}</div>
-                        <div className="text-sm">{contact.phone}</div>
-                      </a>
+                      <span key={index}>
+                        <a href={`tel:${contact.phone.replace(/[^0-9]/g, '')}`} className="hover:text-blue-400 transition-colors">
+                          {contact.name} ({contact.phone})
+                        </a>
+                        {index < contactInfo.contact_groups.ustalar.length - 1 && ', '}
+                      </span>
                     ))}
                   </div>
-                </div>
-                
-                {/* Satış */}
-                <div className="bg-gray-800 p-6 rounded-xl">
-                  <h3 className="text-xl font-bold mb-4 text-orange-400">💼 Satış</h3>
-                  <div className="space-y-3">
+                  
+                  {/* Satış */}
+                  <div>
+                    <span className="text-orange-400 font-semibold">💼 Satış: </span>
                     {contactInfo.contact_groups?.satis?.map((contact, index) => (
-                      <a
-                        key={index}
-                        href={`tel:${contact.phone.replace(/[^0-9]/g, '')}`}
-                        className="block bg-orange-500 text-white px-4 py-3 rounded-lg hover:bg-orange-600 transition-colors"
-                      >
-                        <div className="font-medium">{contact.name}</div>
-                        <div className="text-sm">{contact.phone}</div>
-                      </a>
+                      <span key={index}>
+                        <a href={`tel:${contact.phone.replace(/[^0-9]/g, '')}`} className="hover:text-orange-400 transition-colors">
+                          {contact.name} ({contact.phone})
+                        </a>
+                        {index < contactInfo.contact_groups.satis.length - 1 && ', '}
+                      </span>
                     ))}
                   </div>
                 </div>
               </div>
 
               {/* Ünvan və Digər Məlumatlar */}
-              <div className="bg-gray-800 p-8 rounded-xl text-center">
-                <h3 className="text-2xl font-bold mb-4">📍 Ünvan</h3>
-                <p className="text-gray-300 mb-2">{contactInfo.address_line1}</p>
-                <p className="text-gray-300 mb-2">{contactInfo.address_line2}</p>
-                <p className="text-gray-300 mb-4">{contactInfo.address_line3}</p>
+              <div className="bg-gray-800 rounded-xl p-8 text-center">
+                <h3 className="text-xl font-bold mb-4">📍 Ünvan və İş Saatları</h3>
+                <p className="text-gray-300 mb-1">{contactInfo.address_line1}</p>
+                <p className="text-gray-300 mb-1">{contactInfo.address_line2}</p>
+                <p className="text-gray-300 mb-3">{contactInfo.address_line3}</p>
                 <p className="text-gray-400 mb-2">🕒 {contactInfo.work_hours}</p>
-                <p className="text-gray-400 italic">{contactInfo.company_description}</p>
+                <p className="text-gray-400 italic text-sm">{contactInfo.company_description}</p>
               </div>
             </div>
           )}
