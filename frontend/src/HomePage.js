@@ -143,7 +143,8 @@ const HomePage = () => {
               {getFilteredProducts().map(product => (
                 <div 
                   key={product.id}
-                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+                  onClick={() => openProductModal(product)}
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
                 >
                   {/* Şəkil */}
                   <div className="w-full h-48 bg-gray-100 flex items-center justify-center overflow-hidden">
@@ -174,17 +175,7 @@ const HomePage = () => {
                     
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-bold text-orange-600">{product.price.toFixed(2)} ₼</span>
-                      <button 
-                        onClick={() => {
-                          const contactSection = document.getElementById('contact');
-                          if (contactSection) {
-                            contactSection.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        }}
-                        className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors text-sm font-medium"
-                      >
-                        Sifariş Et
-                      </button>
+                      <span className="text-sm text-orange-500 font-medium">Detallar üçün klikləyin</span>
                     </div>
                   </div>
                 </div>
