@@ -1,18 +1,18 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import "@/App.css";
-import Home from "./Home";
+import HomePage from "./HomePage";
 import AdminPanel from "./AdminPanel";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/araz79" element={<AdminPanel />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
