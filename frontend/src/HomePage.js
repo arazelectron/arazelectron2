@@ -62,7 +62,7 @@ const HomePage = () => {
       {/* Header */}
       <header className="bg-white shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             <div className="flex items-center space-x-3">
               <img 
                 src="https://customer-assets.emergentagent.com/job_azdili-danis/artifacts/rs4w4vbq_AE.png" 
@@ -74,13 +74,6 @@ const HomePage = () => {
                 <p className="text-sm text-gray-600">Keyfiyyətli elektron avadanlıqlar</p>
               </div>
             </div>
-            
-            <Link 
-              to="/araz79" 
-              className="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium"
-            >
-              Admin Panel
-            </Link>
           </div>
         </div>
       </header>
