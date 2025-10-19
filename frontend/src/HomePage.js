@@ -377,25 +377,11 @@ const HomePage = () => {
                     </div>
                   )}
 
-                  {/* Əlaqə düymələri */}
-                  <div className="space-y-3">
-                    <button 
-                      onClick={() => {
-                        closeModal();
-                        setTimeout(() => {
-                          const contactSection = document.getElementById('contact');
-                          if (contactSection) {
-                            contactSection.scrollIntoView({ behavior: 'smooth' });
-                          }
-                        }, 300);
-                      }}
-                      className="w-full bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors font-semibold text-lg"
-                    >
-                      Sifariş Et
-                    </button>
+                  {/* Bağla düyməsi */}
+                  <div>
                     <button 
                       onClick={closeModal}
-                      className="w-full bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+                      className="w-full bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors font-semibold text-lg"
                     >
                       Bağla
                     </button>
