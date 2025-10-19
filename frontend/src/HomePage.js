@@ -11,6 +11,8 @@ const HomePage = () => {
   const [contactInfo, setContactInfo] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [loading, setLoading] = useState(true);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     loadData();
