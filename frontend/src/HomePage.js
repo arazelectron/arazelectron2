@@ -286,6 +286,138 @@ const HomePage = () => {
           <p className="text-gray-500 text-sm">© 2024 Araz Elektron. Bütün hüquqlar qorunur.</p>
         </div>
       </footer>
+
+      {/* Məhsul Detailləri Modal */}
+      {showModal && selectedProduct && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+          onClick={closeModal}
+        >
+          <div 
+            className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-gray-900">Məhsul Detailləri</h2>
+              <button 
+                onClick={closeModal}
+                className="text-gray-500 hover:text-gray-700 text-3xl leading-none"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Sol tərəf - Şəkillər */}
+                <div>
+                  <div className="bg-gray-100 rounded-lg overflow-hidden mb-4">
+                    {selectedProduct.image_urls && selectedProduct.image_urls.length > 0 ? (
+                      <img
+                        src={selectedProduct.image_urls[0]}
+                        alt={selectedProduct.name}
+                        className="w-full h-96 object-cover"
+                        onError={(e) => {
+                          e.target.src = 'https://via.placeholder.com/600x400?text=Şəkil+Yoxdur';
+                        }}
+                      />
+                    ) : (
+                      <div className="w-full h-96 flex items-center justify-center text-gray-400">
+                        Şəkil Yoxdur
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Əlavə şəkillər */}
+                  {selectedProduct.image_urls && selectedProduct.image_urls.length > 1 && (
+                    <div className="grid grid-cols-3 gap-2">
+                      {selectedProduct.image_urls.slice(1, 4).map((img, index) => (
+                        <img
+                          key={index}
+                          src={img}
+                          alt={`${selectedProduct.name} ${index + 2}`}
+                          className="w-full h-24 object-cover rounded-lg cursor-pointer hover:opacity-75 transition-opacity"
+                          onError={(e) => {
+                            e.target.src = 'https://via.placeholder.com/200x150?text=?';
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Sağ tərəf - Məlumatlar */}
+                <div>
+                  <div className="mb-4">
+                    <span className="inline-block bg-orange-100 text-orange-600 text-sm px-4 py-1 rounded-full font-medium">
+                      {selectedProduct.category}
+                    </span>
+                  </div>
+                  
+                  <h1 className="text-3xl font-bold text-gray-900 mb-4">{selectedProduct.name}</h1>
+                  
+                  <div className="mb-6">
+                    <span className="text-4xl font-bold text-orange-600">{selectedProduct.price.toFixed(2)} ₼</span>
+                  </div>
+
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Təsvir</h3>
+                    <p className="text-gray-700">{selectedProduct.description}</p>
+                  </div>
+
+                  {selectedProduct.specifications && (
+                    <div className="mb-6">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-3">Texniki Xüsusiyyətlər</h3>
+                      <div className="bg-gray-50 rounded-lg p-4">
+                        <pre className="text-sm text-gray-700 whitespace-pre-wrap font-sans">
+                          {selectedProduct.specifications}
+                        </pre>
+                      </div>
+                    </div>
+                  )}
+
+                  {selectedProduct.stock !== undefined && (
+                    <div className="mb-6">
+                      <div className="flex items-center space-x-2">
+                        <span className="text-gray-600">Stok:</span>
+                        <span className={`font-semibold ${selectedProduct.stock > 0 ? 'text-green-600' : 'text-red-600'}`}>
+                          {selectedProduct.stock > 0 ? `${selectedProduct.stock} ədəd mövcuddur` : 'Stokda yoxdur'}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Əlaqə düymələri */}
+                  <div className="space-y-3">
+                    <button 
+                      onClick={() => {
+                        closeModal();
+                        setTimeout(() => {
+                          const contactSection = document.getElementById('contact');
+                          if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }, 300);
+                      }}
+                      className="w-full bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors font-semibold text-lg"
+                    >
+                      Sifariş Et
+                    </button>
+                    <button 
+                      onClick={closeModal}
+                      className="w-full bg-gray-200 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+                    >
+                      Bağla
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
