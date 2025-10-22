@@ -30,7 +30,6 @@ export default function OrderForm() {
             />
             <h3>{p.name}</h3>
             <p>{p.price}</p>
-            <button>Sifariş et</button>
           </div>
         ))}
       </div>

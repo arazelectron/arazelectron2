@@ -41,7 +41,6 @@ class Product(BaseModel):
     price: float
     category: str
     image_urls: List[str] = []  # Multiple images
-    stock: int = 0
     is_featured: bool = False
     specifications: str = ""  # Additional specifications
     created_at: datetime = Field(default_factory=datetime.utcnow)
@@ -52,7 +51,6 @@ class ProductCreate(BaseModel):
     price: float
     category: str
     image_urls: List[str] = []
-    stock: int = 0
     is_featured: bool = False
     specifications: str = ""
 
@@ -350,7 +348,7 @@ async def initialize_sample_data():
                 "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=400",
                 "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=400"
             ],
-            "stock": 15,
+        
             "is_featured": True,
             "specifications": "• 6.4 düym Super AMOLED ekran\n• Exynos 1380 prosessor\n• 50MP əsas kamera + 12MP ultra geniş + 5MP makro\n• 5000mAh batareya\n• 25W sürətli şarj"
         },
